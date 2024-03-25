@@ -1,0 +1,12 @@
+{
+  "name": "type_script_part_9",
+  "version": "1.0.0",
+  "description": "full stack open mooc.fi course , part 9, type script, solutions to exs  ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "ts-node": "ts-node"
+  },
+  "author": "dmitri",
+  "license": "ISC"
+}
