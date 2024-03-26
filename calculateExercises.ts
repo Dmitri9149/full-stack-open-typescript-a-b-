@@ -17,8 +17,8 @@ const calculateExercises =
     if (average >= target && (average - target) / target > 0.5) 
       {return 3} 
       else if ((average <= target && (target - average) / target < 0.5)) 
-      {return 1} 
-      else {return 2}
+      {return 2} 
+      else {return 1}
     };
     const success = () => { if (rating() == 1) {return false} else {return true }};
     const ratingDescription = () => {
@@ -37,3 +37,7 @@ const calculateExercises =
       ratingDescription: ratingDescription()
     }
   } 
+
+console.log(calculateExercises([3, 0, 2, 4.5, 0, 3, 1],2));
+
+
