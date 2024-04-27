@@ -9,20 +9,23 @@ interface ExercisesInfo {
 }
 
 interface ArgsData {
-  records: number[]
+  target: number;
+  records: number[];
 }
 
 const parseArguments1 = (args: string[]):ArgsData => {
-  if (args.length < 2) throw new Error('Not enough arguments');
-  if (args.length === 2) throw new Error('Training records were not provided');
-  const maybeData = args.slice(1);
+  if (args.length < 3) throw new Error('Not enough arguments');
+  if (args.length === 3) throw new Error('Training records were not provided');
+  const maybeData = args.slice(2);
   let validArgs = true;
     for (const arg in maybeData) {
       validArgs = validArgs && !isNaN(Number(arg))
     } 
   if (validArgs) {
+    const data = maybeData.map( d => Number(d));
     return {
-      records: maybeData.map( d => Number(d)) 
+      target: data[0],
+      records: data.slice(1)
     }
   } else {
     throw new Error('Provided values were not numbers!');
@@ -41,11 +44,11 @@ const calculateExercises =
       {return 2} 
       else {return 1}
     };
-    const success = () => { if (rating() == 1) {return false} else {return true }};
+    const success = () => { if (rating() == 1 || 2) {return false} else {return true }};
     const ratingDescription = () => {
-      if ( rating() == 1 ) {return `not many training hours`} 
-      else if (rating() == 2) {return `good`} 
-      else {return `very good`}
+      if ( rating() == 2) {return `not too bad but could be better`} 
+      else if (rating() == 1) {return `better then nothing`} 
+      else {return `good`}
     }
 
     return {
@@ -59,6 +62,16 @@ const calculateExercises =
     }
   } 
 
-console.log(calculateExercises([3, 0, 2, 4.5, 0, 3, 1],2));
+  try {
+    const {target, records} = parseArguments1(process.argv);
+    console.log(calculateExercises(records, target));
+  } catch(error: unknown) {
+    let errorMessage = 'Something bad happened.';
+    if (error instanceof Error) {
+      errorMessage += ' Error ' + error.message;
+    }
+    console.log(errorMessage);
+  }
+
 
 
