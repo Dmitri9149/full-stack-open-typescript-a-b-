@@ -73,5 +73,7 @@ const calculateExercises =
     console.log(errorMessage);
   }
 
+export default calculateExercises;
+
 
 
