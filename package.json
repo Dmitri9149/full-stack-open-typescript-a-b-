@@ -20,7 +20,8 @@
     "calculateBmi": "ts-node bmiCalculator.ts",
     "calculateExercises": "ts-node calculateExercises",
     "start": "ts-node index.ts",
-    "dev": "ts-node-dev index.ts"
+    "dev": "ts-node-dev index.ts",
+    "lint": "eslint --ext .ts ."
   },
   "dependencies": {
     "express": "^4.19.2"
