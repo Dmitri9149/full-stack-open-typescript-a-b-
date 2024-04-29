@@ -44,20 +44,22 @@ const calculateExercises =
       {return 2;} 
       else {return 1;}
     };
-    const success = () => { if (rating() == 1 || 2) {return false;} else {return true; }};
+    const rating_res = rating();
+    const success = (rating: number): boolean => {if (rating <= 2) {return false;} else {return true; }};
     const ratingDescription = () => {
-      if ( rating() == 2) {return `not too bad but could be better`;} 
-      else if (rating() == 1) {return `better then nothing`;} 
+      if ( rating_res <=  2 || rating_res >1) {return `not too bad but could be better`;} 
+      else if (rating_res <= 1) {return `better then nothing`;} 
       else {return `good`;}
     };
+
 
     return {
       periodLength: daily_hours.length,
       trainingDays: training_days.length,
       target: target, 
       average: average, 
-      rating: rating(),
-      success: success(), 
+      rating: rating_res,
+      success: success(rating_res), 
       ratingDescription: ratingDescription()
     };
   }; 
