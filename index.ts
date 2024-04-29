@@ -1,6 +1,6 @@
 import express from 'express';
 import calculateBmi from './bmiCalculator';
-// import calculateExercises from './calculateExercises';
+import calculateExercises from './calculateExercises';
 const app = express();
 
 app.use(express.json());
@@ -33,6 +33,14 @@ app.get('/bmi', (req, res) => {
         error: "malformed parameters"
       });
     }
+});
+
+app.post('/exercises', (req,res) => {
+  const { daily_exercises, target} = req.body;
+  const result = calculateExercises(daily_exercises, Number(target));
+  
+  return res.send({ result });
+
 });
 
 const PORT = 3003;
