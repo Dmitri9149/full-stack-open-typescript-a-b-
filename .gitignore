@@ -135,3 +135,5 @@ dist
 .pnp.*
 
 Makefile
+text_script.txt
+*.http
