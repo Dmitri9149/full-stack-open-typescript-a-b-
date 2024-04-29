@@ -11,21 +11,21 @@ const parseArguments = (args: string[]):HeightWeight => {
     return {
       height: Number(args[2]),
       weight: Number(args[3])
-    }
+    };
   } else {
     throw new Error('Provided values were not numbers!');
   }
-} 
+}; 
 
 const calculateBmi = (height: number, weight: number): string  => {
   const height_m = height * 0.01;
   
   const index: number = weight / (height_m * height_m);
-  if (index < 18.5) { return `Underweight`} 
-  else if (index >= 18.5 && index <= 24.9) {return `Normal (healthy weight)`} 
-  else if (index > 24.9 && index <= 29.9) { return `Overweight`} 
-  else { return `Obesity` };
-}
+  if (index < 18.5) { return `Underweight`;} 
+  else if (index >= 18.5 && index <= 24.9) {return `Normal (healthy weight)`;} 
+  else if (index > 24.9 && index <= 29.9) { return `Overweight`;} 
+  else { return `Obesity`; }
+};
 
 try {
   const {height, weight} = parseArguments(process.argv);

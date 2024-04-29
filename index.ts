@@ -31,7 +31,7 @@ app.get('/bmi', (req, res) => {
     catch(error) {
       return res.status(404).json({
         error: "malformed parameters"
-      })
+      });
     }
 });
 
